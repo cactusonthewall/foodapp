@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New Pasta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Pasta Name</ion-label>
+      <ion-input [(ngModel)]="new_name" placeholder="Enter pasta name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-textarea [(ngModel)]="new_desc" placeholder="Enter pasta description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Image URL</ion-label>
+      <ion-input [(ngModel)]="new_url" placeholder="Enter image URL"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Price</ion-label>
+      <ion-select [(ngModel)]="new_price" label="Price" labelPlacement="floating" >
+        <ion-select-option *ngFor="let price of arr_price"
+          [value]="price">{{price}}</ion-select-option>
+        </ion-select>   
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Spicy?</ion-label>
+      <ion-checkbox [(ngModel)]="new_spicy" justify="start"></ion-checkbox>
+    </ion-item>
+    <ion-item lines="none" *ngIf="new_url">
+      <ion-img [src]="new_url" alt="Image preview" style="width: 100%; height: auto;"></ion-img>
+    </ion-item>
+    <ion-item>
+      <ion-button expand="block" size="small" id="btnsubmit" (click)="submitpasta()">Submit</ion-button>
+      <ion-alert
+        trigger="btnsubmit"
+        header="Add Pasta"
+        message="Data Succesfully stored"
+        [buttons]="alertButtons"
+      ></ion-alert>
+    </ion-item>
+  </ion-list>
+</ion-content>

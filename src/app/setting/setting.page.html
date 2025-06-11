@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>setting</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">setting</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Masukkan Photo URL</ion-label>
+      <ion-input [(ngModel)]="Url"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-img [src]="Url" *ngIf="Url" alt="Profile Image"></ion-img>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Enter Password</ion-label>
+      <ion-input 
+        [type]="showPassword ? 'text' : 'password'"
+        [(ngModel)]="password"
+        (ngModelChange)="checkPasswordStrength()">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox [checked]="isLongEnough" disabled></ion-checkbox>
+      <ion-label>More than 6 characters</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox [checked]="hasNumber" disabled></ion-checkbox>
+      <ion-label>Includes a number</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox [checked]="hasSpecialChar" disabled></ion-checkbox>
+      <ion-label>Includes a special character (!&#64;#$%^&amp;*)</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

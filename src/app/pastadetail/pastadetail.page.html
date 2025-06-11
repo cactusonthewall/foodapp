@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>pastadetail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="secondary" routerLink="/editpasta/{{pastas.id}}"> 
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="danger" (click)="deletepasta(pastas.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <img [src]="pastas.url" />
+    <ion-card-header>
+      <ion-card-title>{{pastas.name}}</ion-card-title>
+      <ion-card-subtitle>Rp. {{pastas.price}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+    {{pastas.description}}
+    <br>
+    <ion-label>Pasta Recipe Instruction:</ion-label>
+    <ol >
+      <li *ngFor="let ins of pastas.instructions">
+          {{ins.instruction}}
+      </li>
+    </ol>
+    <ion-title>Add New Instruction</ion-title>
+      <ion-item>
+        <ion-label position="stacked">Step No.</ion-label>
+        <ion-input [(ngModel)]="new_step"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Instruction</ion-label>
+        <ion-input [(ngModel)]="new_instruction"></ion-input>
+      </ion-item>
+      <ion-item>
+      <ion-button expand="block" size="small" id="btnadd" (click)="addInstruction()">ADD</ion-button>
+      <ion-alert
+        trigger="btnadd"
+        header="Add New Instruction"
+        message="Data Succesfully stored"
+        [buttons]="alertButtons"
+      ></ion-alert>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
